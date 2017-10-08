@@ -1,0 +1,275 @@
+﻿<Window x:Class="DQ8.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DQ8"
+        mc:Ignorable="d"
+        Title="DQ8 セーブデータ改造(Nintendo 3DS)" Height="650" Width="800"
+        WindowStartupLocation="CenterScreen"
+        AllowDrop="True" Drop="Window_Drop" PreviewDragOver="Window_PreviewDragOver">
+    <Grid>
+        <Grid.Resources>
+            <local:ItemConverter x:Key="ItemConverter"/>
+        </Grid.Resources>
+        <DockPanel>
+            <Menu DockPanel.Dock="Top">
+                <MenuItem Header="ファイル(_F)">
+                    <MenuItem Header="開く(_O)" Click="MenuItemFileOpen_Click"/>
+                    <MenuItem Header="上書き保存(_S)" Click="MenuItemFileSave_Click"/>
+                    <MenuItem Header="名前を付けて保存(_S)" Click="MenuItemFileSaveAs_Click"/>
+                    <Separator/>
+                    <MenuItem Header="終了(_X)" Click="MenuItemExit_Click"/>
+                </MenuItem>
+                <MenuItem Header="情報(_A)" Click="MenuItemAbout_Click"/>
+            </Menu>
+            <ToolBar DockPanel.Dock="Top">
+                <Button Width="32" Height="32" Click="ToolBarFileOpen_Click" ToolTip="開く">
+                    <Image Source="{StaticResource Open}"/>
+                </Button>
+                <Button Width="32" Height="32" Click="ToolBarFileSave_Click" ToolTip="保存">
+                    <Image Source="{StaticResource Save}"/>
+                </Button>
+                <ComboBox SelectedIndex="0" SelectionChanged="ToolBarAdventure_SelectionChanged">
+                    <ComboBoxItem Content="ぼうけんのしょ1"/>
+                    <ComboBoxItem Content="ぼうけんのしょ2"/>
+                </ComboBox>
+            </ToolBar>
+            <TabControl>
+                <TabItem Header="基本設定">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition/>
+                            <RowDefinition Height="3*"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="5"/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition/>
+                            <ColumnDefinition Width="50"/>
+                        </Grid.ColumnDefinitions>
+                        <Label Grid.RowSpan="2" Content="プレイ時間" VerticalAlignment="Center"/>
+                        <TextBox Grid.Column="1" Text="{Binding PlayHour, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Column="2" Content="時間"/>
+                        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding PlayMinute, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="1" Grid.Column="2" Content="分"/>
+                        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding PlaySecond, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="2" Grid.Column="2" Content="秒"/>
+                        <Label Grid.Row="3" Content="お金"/>
+                        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding GoldHand, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="3" Grid.Column="2" Content="G"/>
+                        <Label Grid.Row="4" Content="銀行"/>
+                        <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding GoldBank, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="4" Grid.Column="2" Content="G"/>
+                        <Label Grid.Row="5" Content="カジノコイン"/>
+                        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding CasinoCoin, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="5" Grid.Column="2" Content="枚"/>
+                        <Label Grid.Row="6" Content="ちいさなメダル"/>
+                        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SmallMedal, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="6" Grid.Column="2" Content="枚"/>
+                        <Label Grid.RowSpan="2" Grid.Column="4" Content="走破距離" VerticalAlignment="Center"/>
+                        <TextBox Grid.Row="0" Grid.Column="5" Text="{Binding RunKm, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="0" Grid.Column="6" Content="Km"/>
+                        <TextBox Grid.Row="1" Grid.Column="5" Text="{Binding Runm, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="1" Grid.Column="6" Content="m"/>
+                        <Label Grid.Row="2" Grid.Column="4" Content="戦闘回数"/>
+                        <TextBox Grid.Row="2" Grid.Column="5" Text="{Binding BattleCount, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="2" Grid.Column="6" Content="回"/>
+                        <Label Grid.Row="3" Grid.Column="4" Content="倒した匹数"/>
+                        <TextBox Grid.Row="3" Grid.Column="5" Text="{Binding KillCount, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="3" Grid.Column="6" Content="匹"/>
+                        <Label Grid.Row="4" Grid.Column="4" Content="追い払った匹数"/>
+                        <TextBox Grid.Row="4" Grid.Column="5" Text="{Binding WardOffCount, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="4" Grid.Column="6" Content="匹"/>
+                        <Label Grid.Row="5" Grid.Column="4" Content="逃走回数"/>
+                        <TextBox Grid.Row="5" Grid.Column="5" Text="{Binding EscapeCount, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="5" Grid.Column="6" Content="回"/>
+                        <Label Grid.Row="6" Grid.Column="4" Content="勝利回数"/>
+                        <TextBox Grid.Row="6" Grid.Column="5" Text="{Binding VictoryCount, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="6" Grid.Column="6" Content="回"/>
+                        <Label Grid.Row="7" Grid.Column="4" Content="全滅回数"/>
+                        <TextBox Grid.Row="7" Grid.Column="5" Text="{Binding AnnihilationCount, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="7" Grid.Column="6" Content="回"/>
+                        <Label Grid.Row="8" Grid.Column="4" Content="全獲得ゴールド"/>
+                        <TextBox Grid.Row="8" Grid.Column="5" Text="{Binding TotalGold, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="8" Grid.Column="6" Content="G"/>
+                        <Label Grid.Row="9" Grid.Column="4" Grid.RowSpan="2" Content="最大ダメージ" VerticalAlignment="Center"/>
+                        <Label Grid.Row="9" Grid.Column="6" Content="に"/>
+                        <TextBox Grid.Row="10" Grid.Column="5" Text="{Binding MaxDamage, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="10" Grid.Column="6" Content="P"/>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="人物">
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition Width="200"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <ListBox x:Name="ListBoxParty" ItemsSource="{Binding Party}" DisplayMemberPath="Name"/>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <Label Content="Lv"/>
+                            <TextBox Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Lv, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="1" Content="経験値"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Exp, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="2" Content="ちから"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Power, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="3" Content="みのまもり"/>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Defense, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="4" Content="すばやさ"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Speed, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="5" Content="かしこさ"/>
+                            <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Cool, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="6" Content="HP+"/>
+                            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.HPPlus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="7" Content="MP+"/>
+                            <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.MPPlus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="8" Content="ちから+"/>
+                            <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.PowerPlus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="9" Content="みのまもり+"/>
+                            <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.DefensePlus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="10" Content="すばやさ+"/>
+                            <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.SpeedPlus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="11" Content="かしこさ+"/>
+                            <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.CoolPlus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="12" Content="スキル+"/>
+                            <TextBox Grid.Row="12" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.SkillPlus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="13" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[0].Name}"/>
+                            <TextBox Grid.Row="13" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[0].Value, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="14" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[1].Name}"/>
+                            <TextBox Grid.Row="14" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[1].Value, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="15" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[2].Name}"/>
+                            <TextBox Grid.Row="15" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[2].Value, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="16" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[3].Name}"/>
+                            <TextBox Grid.Row="16" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[3].Value, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="17" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[4].Name}"/>
+                            <TextBox Grid.Row="17" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[4].Value, UpdateSourceTrigger=PropertyChanged}"/>
+                        </Grid>
+                        <Grid Grid.Column="2">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="4*"/>
+                                <RowDefinition Height="25"/>
+                                <RowDefinition/>
+                            </Grid.RowDefinitions>
+                            <ListBox x:Name="ListBoxCharactorItem" ItemsSource="{Binding ElementName=ListBoxParty, Path=SelectedItem.Items}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate>
+                                        <StackPanel Orientation="Horizontal">
+                                            <Button Content=" ... " Click="ButtonCharactorItemChange_Click"/>
+                                            <Label Content="{Binding ID, Converter={StaticResource ItemConverter}}"/>
+                                        </StackPanel>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <Label Grid.Row="1" Content="装備"/>
+                            <Grid Grid.Row="2">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                    <RowDefinition/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition/>
+                                    <ColumnDefinition Width="50"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Label Content="武器"/>
+                                <ComboBox Grid.Column="1" ItemsSource="{Binding ElementName=ListBoxCharactorItem, Path=Items}" SelectedIndex="{Binding ElementName=ListBoxParty, Path=SelectedItem.EquipmentWeapon}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding ID, Converter={StaticResource ItemConverter}}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <Label Grid.Column="2" Content="よろい"/>
+                                <ComboBox Grid.Column="3" ItemsSource="{Binding ElementName=ListBoxCharactorItem, Path=Items}" SelectedIndex="{Binding ElementName=ListBoxParty, Path=SelectedItem.EquipmentArmor}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding ID, Converter={StaticResource ItemConverter}}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <Label Grid.Row="1" Content="盾"/>
+                                <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ElementName=ListBoxCharactorItem, Path=Items}" SelectedIndex="{Binding ElementName=ListBoxParty, Path=SelectedItem.EquipmentShield}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding ID, Converter={StaticResource ItemConverter}}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <Label Grid.Row="1" Grid.Column="2" Content="かぶと"/>
+                                <ComboBox Grid.Row="1" Grid.Column="3" ItemsSource="{Binding ElementName=ListBoxCharactorItem, Path=Items}" SelectedIndex="{Binding ElementName=ListBoxParty, Path=SelectedItem.EquipmentHelmet}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding ID, Converter={StaticResource ItemConverter}}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                                <Label Grid.Row="3" Content="装飾品"/>
+                                <ComboBox Grid.Row="3" Grid.Column="1" ItemsSource="{Binding ElementName=ListBoxCharactorItem, Path=Items}" SelectedIndex="{Binding ElementName=ListBoxParty, Path=SelectedItem.EquipmentAccessory}">
+                                    <ComboBox.ItemTemplate>
+                                        <DataTemplate>
+                                            <Label Content="{Binding ID, Converter={StaticResource ItemConverter}}"/>
+                                        </DataTemplate>
+                                    </ComboBox.ItemTemplate>
+                                </ComboBox>
+                            </Grid>
+                        </Grid>
+                    </Grid>
+                </TabItem>
+                <TabItem Header="ふくろ">
+                    <ListBox ItemsSource="{Binding Bag.Items}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <StackPanel Orientation="Horizontal">
+                                    <Label Content="個数 : "/>
+                                    <TextBox Text="{Binding Count}" Width="50"/>
+                                    <Button Content=" ... " Click="ButtonItemChange_Click"/>
+                                    <Label Content="{Binding ID, Converter={StaticResource ItemConverter}}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                </TabItem>
+            </TabControl>
+        </DockPanel>
+    </Grid>
+</Window>
