@@ -79,6 +79,8 @@
                         <Label Grid.Row="5" Grid.Column="2" Content="枚"/>
                         <Label Grid.Row="6" Content="ちいさなメダル"/>
                         <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding SmallMedal, UpdateSourceTrigger=PropertyChanged}"/>
+                        <Label Grid.Row="8" Content="名前"/>
+                        <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding HeroName, UpdateSourceTrigger=PropertyChanged}"/>
                         <Label Grid.Row="6" Grid.Column="2" Content="枚"/>
                         <Label Grid.RowSpan="2" Grid.Column="4" Content="走破距離" VerticalAlignment="Center"/>
                         <TextBox Grid.Row="0" Grid.Column="5" Text="{Binding RunKm, UpdateSourceTrigger=PropertyChanged}"/>

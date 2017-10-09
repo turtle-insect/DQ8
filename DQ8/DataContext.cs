@@ -70,6 +70,19 @@ namespace DQ8
 			}
 		}
 
+		public String HeroName
+		{
+			get
+			{
+				return SaveData.Instance().ReadUnicode(0x09F8, 8);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteUnicode(0x09F8, 8, value);
+			}
+		}
+
 		public uint BattleCount
 		{
 			get
