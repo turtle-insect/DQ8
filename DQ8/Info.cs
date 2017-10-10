@@ -6,7 +6,7 @@ namespace DQ8
 	class Info
 	{
 		private static Info mThis;
-		public List<ItemInfo> Items { get; private set; } = new List<ItemInfo>();
+		public List<NameValue> Items { get; private set; } = new List<NameValue>();
 
 		private Info() { }
 
@@ -20,15 +20,15 @@ namespace DQ8
 			return mThis;
 		}
 
-		public ItemInfo Item(uint id)
+		public NameValue Item(uint id)
 		{
 			int min = 0;
 			int max = Items.Count;
 			for (; min < max;)
 			{
 				int mid = (min + max) / 2;
-				if (Items[mid].ID == id) return Items[mid];
-				else if (Items[mid].ID > id) max = mid;
+				if (Items[mid].Value == id) return Items[mid];
+				else if (Items[mid].Value > id) max = mid;
 				else min = mid + 1;
 			}
 			return null;
@@ -39,7 +39,7 @@ namespace DQ8
 			AppendList("info\\item.txt", Items);
 		}
 
-		private void AppendList(String filename, List<ItemInfo> items)
+		private void AppendList(String filename, List<NameValue> items)
 		{
 			if (!System.IO.File.Exists(filename)) return;
 			String[] lines = System.IO.File.ReadAllLines(filename);
@@ -54,7 +54,7 @@ namespace DQ8
 				uint id = 0;
 				if (values[0].Length > 1 && values[0][1] == 'x') id = Convert.ToUInt32(values[0], 16);
 				else id = Convert.ToUInt32(values[0]);
-				items.Add(new ItemInfo() { ID = id, Name = values[1] });
+				items.Add(new NameValue() { Value = id, Name = values[1] });
 			}
 		}
 	}

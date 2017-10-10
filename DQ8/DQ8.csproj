@@ -58,10 +58,10 @@
     <Compile Include="CharactorItem.cs" />
     <Compile Include="Info.cs" />
     <Compile Include="ItemConverter.cs" />
-    <Compile Include="ItemInfo.cs" />
     <Compile Include="ItemSelectWindow.xaml.cs">
       <DependentUpon>ItemSelectWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="NameValue.cs" />
     <Compile Include="SaveData.cs" />
     <Compile Include="Skill.cs" />
     <Compile Include="Util.cs" />

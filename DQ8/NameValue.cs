@@ -2,9 +2,9 @@
 
 namespace DQ8
 {
-	class ItemInfo
+	class NameValue
 	{
-		public uint ID { get; set; }
+		public uint Value { get; set; }
 		public String Name { get; set; }
 	}
 }

@@ -21,8 +21,8 @@ namespace DQ8
 			CreateItemList("");
 			foreach (var item in ListBoxItem.Items)
 			{
-				ItemInfo info = item as ItemInfo;
-				if (info.ID == ID)
+				NameValue info = item as NameValue;
+				if (info.Value == ID)
 				{
 					ListBoxItem.SelectedItem = item;
 					ListBoxItem.ScrollIntoView(item);
@@ -43,9 +43,9 @@ namespace DQ8
 
 		private void ButtonDecision_Click(object sender, RoutedEventArgs e)
 		{
-			ItemInfo info = ListBoxItem.SelectedItem as ItemInfo;
+			NameValue info = ListBoxItem.SelectedItem as NameValue;
 			if (info == null) return;
-			ID = info.ID;
+			ID = info.Value;
 			Close();
 		}
 
