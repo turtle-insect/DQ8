@@ -65,6 +65,7 @@
     <Compile Include="SaveData.cs" />
     <Compile Include="Skill.cs" />
     <Compile Include="Util.cs" />
+    <Compile Include="Zoom.cs" />
     <Page Include="ItemSelectWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

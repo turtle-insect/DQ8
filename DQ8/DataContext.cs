@@ -7,10 +7,12 @@ namespace DQ8
 	class DataContext
 	{
 		public ObservableCollection<Charactor> Party { get; set; } = new ObservableCollection<Charactor>();
+		public ObservableCollection<Zoom> Destination { get; set; } = new ObservableCollection<Zoom>();
 		public Bag Bag { get; set; } = new Bag();
 
 		public DataContext()
 		{
+			// 人物
 			String[] chars = { "主人公", "ヤンガス", "ゼシカ", "ククール", "ゲルダ", "モーリー" };
 			List<List<String>> skills = new List<List<string>>()
 			{
@@ -26,6 +28,14 @@ namespace DQ8
 				Charactor ch = new Charactor(0x11F8 + i * 64, 0xA10 + i * 34, skills[(int)i]);
 				ch.Name = chars[i];
 				Party.Add(ch);
+			}
+
+			// ルーラ
+			foreach (var item in Info.Instance().Zooms)
+			{
+				Zoom zoom = new Zoom(item.Value);
+				zoom.Name = item.Name;
+				Destination.Add(zoom);
 			}
 		}
 
