@@ -280,6 +280,16 @@
                         </ListBox.ItemTemplate>
                     </ListBox>
                 </TabItem>
+                <TabItem Header="パーティー">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <ComboBox Grid.Row="1"/>
+                        <ListBox/>
+                    </Grid>
+                </TabItem>
             </TabControl>
         </DockPanel>
     </Grid>
