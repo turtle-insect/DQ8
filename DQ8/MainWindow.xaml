@@ -11,6 +11,7 @@
     <Grid>
         <Grid.Resources>
             <local:ItemConverter x:Key="ItemConverter"/>
+            <local:RowConverter x:Key="RowConverter"/>
         </Grid.Resources>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
@@ -286,8 +287,20 @@
                             <RowDefinition/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <ComboBox Grid.Row="1"/>
-                        <ListBox/>
+                        <ListBox x:Name="ListBoxRow" ItemsSource="{Binding Rows}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Content="{Binding ID, Converter={StaticResource RowConverter}}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <ComboBox Grid.Row="1" ItemsSource="{Binding Info.Rows}" SelectedIndex="{Binding ElementName=ListBoxRow, Path=SelectedItem.ID}">
+                            <ComboBox.ItemTemplate>
+                                <DataTemplate>
+                                    <Label Content="{Binding Name}"/>
+                                </DataTemplate>
+                            </ComboBox.ItemTemplate>
+                        </ComboBox>
                     </Grid>
                 </TabItem>
             </TabControl>

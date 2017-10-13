@@ -6,14 +6,15 @@ namespace DQ8
 {
 	class DataContext
 	{
+		public Info Info { get; set; } = Info.Instance();
 		public ObservableCollection<Charactor> Party { get; set; } = new ObservableCollection<Charactor>();
 		public ObservableCollection<Zoom> Destination { get; set; } = new ObservableCollection<Zoom>();
+		public ObservableCollection<Row> Rows { get; set; } = new ObservableCollection<Row>();
 		public Bag Bag { get; set; } = new Bag();
 
 		public DataContext()
 		{
 			// 人物
-			String[] chars = { "主人公", "ヤンガス", "ゼシカ", "ククール", "ゲルダ", "モーリー" };
 			List<List<String>> skills = new List<List<string>>()
 			{
 				new List<String>{"剣スキル", "ヤリスキル", "ブーメラン", "格闘スキル", "ゆうき" },
@@ -23,10 +24,11 @@ namespace DQ8
 				new List<String>{"扇スキル", "ムチスキル", "短剣スキル", "格闘スキル", "アウトロー" },
 				new List<String>{"爪スキル", "打撃スキル", "ブーメラン", "格闘スキル", "ねっけつ" },
 			};
-			for (uint i = 0; i < chars.Length; i++)
+			foreach (var member in Info.Instance().Rows)
 			{
-				Charactor ch = new Charactor(0x11F8 + i * 64, 0xA10 + i * 34, skills[(int)i]);
-				ch.Name = chars[i];
+				if (member.Value == 0xFF) continue;
+				Charactor ch = new Charactor(0x11F8 + member.Value * 64, 0xA10 + member.Value * 34, skills[(int)member.Value]);
+				ch.Name = member.Name;
 				Party.Add(ch);
 			}
 
@@ -36,6 +38,13 @@ namespace DQ8
 				Zoom zoom = new Zoom(item.Value);
 				zoom.Name = item.Name;
 				Destination.Add(zoom);
+			}
+
+			// パーティ並び
+			for (uint i = 0; i < 6; i++)
+			{
+				Row row = new Row(0x11A0 + i);
+				Rows.Add(row);
 			}
 		}
 
