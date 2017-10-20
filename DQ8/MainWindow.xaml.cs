@@ -57,7 +57,7 @@ namespace DQ8
 
 		private void MenuItemAbout_Click(object sender, RoutedEventArgs e)
 		{
-
+			new AboutWindow().ShowDialog();
 		}
 
 		private void ToolBarFileOpen_Click(object sender, RoutedEventArgs e)
