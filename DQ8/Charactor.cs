@@ -19,7 +19,7 @@ namespace DQ8
 			mItemAddress = itemAddress;
 			for (uint i = 0; i < skillNames.Count; i++)
 			{
-				Skill skill = new Skill(mStatusAddress + 0x20 + i * 2);
+				Skill skill = new Skill(mStatusAddress + 0x2C + i * 2);
 				skill.Name = skillNames[(int)i];
 				Skills.Add(skill);
 			}
@@ -29,7 +29,20 @@ namespace DQ8
 			}
 		}
 
-		public uint Lv
+		public uint HP
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(mStatusAddress, 2);
+			}
+
+			set
+			{
+				Util.WriteNumber(mStatusAddress, 2, value, 0, 999);
+			}
+		}
+
+		public uint MP
 		{
 			get
 			{
@@ -38,76 +51,11 @@ namespace DQ8
 
 			set
 			{
-				Util.WriteNumber(mStatusAddress + 0x08, 2, value, 1, 99);
+				Util.WriteNumber(mStatusAddress + 0x08, 2, value, 0, 999);
 			}
 		}
 
-		public uint Exp
-		{
-			get
-			{
-				return SaveData.Instance().ReadNumber(mStatusAddress + 0x00, 4);
-			}
-
-			set
-			{
-				Util.WriteNumber(mStatusAddress + 0x00, 4, value, 0, 9999999);
-			}
-		}
-
-		public uint Power
-		{
-			get
-			{
-				return SaveData.Instance().ReadNumber(mStatusAddress + 0x0A, 2);
-			}
-
-			set
-			{
-				Util.WriteNumber(mStatusAddress + 0x0A, 2, value, 0, 999);
-			}
-		}
-
-		public uint Defense
-		{
-			get
-			{
-				return SaveData.Instance().ReadNumber(mStatusAddress + 0x0C, 2);
-			}
-
-			set
-			{
-				Util.WriteNumber(mStatusAddress + 0x0C, 2, value, 0, 999);
-			}
-		}
-
-		public uint Speed
-		{
-			get
-			{
-				return SaveData.Instance().ReadNumber(mStatusAddress + 0x0E, 2);
-			}
-
-			set
-			{
-				Util.WriteNumber(mStatusAddress + 0x0E, 2, value, 0, 999);
-			}
-		}
-
-		public uint Cool
-		{
-			get
-			{
-				return SaveData.Instance().ReadNumber(mStatusAddress + 0x10, 2);
-			}
-
-			set
-			{
-				Util.WriteNumber(mStatusAddress + 0x10, 2, value, 0, 999);
-			}
-		}
-
-		public uint HPPlus
+		public uint Lv
 		{
 			get
 			{
@@ -116,11 +64,24 @@ namespace DQ8
 
 			set
 			{
-				Util.WriteNumber(mStatusAddress + 0x14, 2, value, 0, 999);
+				Util.WriteNumber(mStatusAddress + 0x14, 2, value, 1, 99);
 			}
 		}
 
-		public uint MPPlus
+		public uint Exp
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(mStatusAddress + 0x0C, 4);
+			}
+
+			set
+			{
+				Util.WriteNumber(mStatusAddress + 0x0C, 4, value, 0, 9999999);
+			}
+		}
+
+		public uint Power
 		{
 			get
 			{
@@ -133,7 +94,7 @@ namespace DQ8
 			}
 		}
 
-		public uint PowerPlus
+		public uint Defense
 		{
 			get
 			{
@@ -146,7 +107,7 @@ namespace DQ8
 			}
 		}
 
-		public uint DefensePlus
+		public uint Speed
 		{
 			get
 			{
@@ -159,7 +120,7 @@ namespace DQ8
 			}
 		}
 
-		public uint SpeedPlus
+		public uint Cool
 		{
 			get
 			{
@@ -172,20 +133,59 @@ namespace DQ8
 			}
 		}
 
-		public uint CoolPlus
+		public uint HPPlus
 		{
 			get
 			{
-				return SaveData.Instance().ReadNumber(mStatusAddress + 0x1E, 2);
+				return SaveData.Instance().ReadNumber(mStatusAddress + 0x20, 2);
 			}
 
 			set
 			{
-				Util.WriteNumber(mStatusAddress + 0x1E, 2, value, 0, 999);
+				Util.WriteNumber(mStatusAddress + 0x20, 2, value, 0, 999);
 			}
 		}
 
-		public uint SkillPlus
+		public uint MPPlus
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(mStatusAddress + 0x22, 2);
+			}
+
+			set
+			{
+				Util.WriteNumber(mStatusAddress + 0x22, 2, value, 0, 999);
+			}
+		}
+
+		public uint PowerPlus
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(mStatusAddress + 0x24, 2);
+			}
+
+			set
+			{
+				Util.WriteNumber(mStatusAddress + 0x24, 2, value, 0, 999);
+			}
+		}
+
+		public uint DefensePlus
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(mStatusAddress + 0x28, 2);
+			}
+
+			set
+			{
+				Util.WriteNumber(mStatusAddress + 0x28, 2, value, 0, 999);
+			}
+		}
+
+		public uint SpeedPlus
 		{
 			get
 			{
@@ -195,6 +195,32 @@ namespace DQ8
 			set
 			{
 				Util.WriteNumber(mStatusAddress + 0x2A, 2, value, 0, 999);
+			}
+		}
+
+		public uint CoolPlus
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(mStatusAddress + 0x2C, 2);
+			}
+
+			set
+			{
+				Util.WriteNumber(mStatusAddress + 0x2C, 2, value, 0, 999);
+			}
+		}
+
+		public uint SkillPlus
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(mStatusAddress + 0x36, 2);
+			}
+
+			set
+			{
+				Util.WriteNumber(mStatusAddress + 0x36, 2, value, 0, 999);
 			}
 		}
 

@@ -27,7 +27,7 @@ namespace DQ8
 			foreach (var member in Info.Instance().Rows)
 			{
 				if (member.Value == 0xFF) continue;
-				Charactor ch = new Charactor(0x11F8 + member.Value * 64, 0xA10 + member.Value * 34, skills[(int)member.Value]);
+				Charactor ch = new Charactor(0x11EC + member.Value * 64, 0xA10 + member.Value * 34, skills[(int)member.Value]);
 				ch.Name = member.Name;
 				Party.Add(ch);
 			}

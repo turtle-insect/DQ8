@@ -143,6 +143,8 @@
                                 <RowDefinition/>
                                 <RowDefinition/>
                                 <RowDefinition/>
+                                <RowDefinition/>
+                                <RowDefinition/>
                             </Grid.RowDefinitions>
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition/>
@@ -150,40 +152,44 @@
                             </Grid.ColumnDefinitions>
                             <Label Content="Lv"/>
                             <TextBox Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Lv, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="1" Content="経験値"/>
-                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Exp, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="2" Content="ちから"/>
-                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Power, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="3" Content="みのまもり"/>
-                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Defense, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="4" Content="すばやさ"/>
-                            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Speed, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="5" Content="かしこさ"/>
-                            <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Cool, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="6" Content="HP+"/>
-                            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.HPPlus, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="7" Content="MP+"/>
-                            <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.MPPlus, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="8" Content="ちから+"/>
-                            <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.PowerPlus, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="9" Content="みのまもり+"/>
-                            <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.DefensePlus, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="10" Content="すばやさ+"/>
-                            <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.SpeedPlus, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="11" Content="かしこさ+"/>
-                            <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.CoolPlus, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="12" Content="スキル+"/>
-                            <TextBox Grid.Row="12" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.SkillPlus, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="13" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[0].Name}"/>
-                            <TextBox Grid.Row="13" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[0].Value, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="14" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[1].Name}"/>
-                            <TextBox Grid.Row="14" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[1].Value, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="15" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[2].Name}"/>
-                            <TextBox Grid.Row="15" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[2].Value, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="16" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[3].Name}"/>
-                            <TextBox Grid.Row="16" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[3].Value, UpdateSourceTrigger=PropertyChanged}"/>
-                            <Label Grid.Row="17" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[4].Name}"/>
-                            <TextBox Grid.Row="17" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[4].Value, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="1" Content="HP"/>
+                            <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.HP, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="2" Content="MP"/>
+                            <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.MP, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="3" Content="Exp"/>
+                            <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Exp, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="4" Content="ちから"/>
+                            <TextBox Grid.Row="4" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Power, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="5" Content="すばやさ"/>
+                            <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Speed, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="6" Content="みのまもり"/>
+                            <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Defense, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="7" Content="かしこさ"/>
+                            <TextBox Grid.Row="7" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Cool, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="8" Content="HP+"/>
+                            <TextBox Grid.Row="8" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.HPPlus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="9" Content="MP+"/>
+                            <TextBox Grid.Row="9" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.MPPlus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="10" Content="ちから+"/>
+                            <TextBox Grid.Row="10" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.PowerPlus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="11" Content="すばやさ+"/>
+                            <TextBox Grid.Row="11" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.SpeedPlus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="12" Content="みのまもり+"/>
+                            <TextBox Grid.Row="12" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.DefensePlus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="13" Content="かしこさ+"/>
+                            <TextBox Grid.Row="13" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.CoolPlus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="14" Content="スキル+"/>
+                            <TextBox Grid.Row="14" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.SkillPlus, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="15" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[0].Name}"/>
+                            <TextBox Grid.Row="15" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[0].Value, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="16" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[1].Name}"/>
+                            <TextBox Grid.Row="16" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[1].Value, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="17" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[2].Name}"/>
+                            <TextBox Grid.Row="17" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[2].Value, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="18" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[3].Name}"/>
+                            <TextBox Grid.Row="18" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[3].Value, UpdateSourceTrigger=PropertyChanged}"/>
+                            <Label Grid.Row="19" Content="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[4].Name}"/>
+                            <TextBox Grid.Row="19" Grid.Column="1" Text="{Binding ElementName=ListBoxParty, Path=SelectedItem.Skills[4].Value, UpdateSourceTrigger=PropertyChanged}"/>
                         </Grid>
                         <Grid Grid.Column="2">
                             <Grid.RowDefinitions>
