@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace DQ8
 {
-    class Row
+    class Order
     {
 		private readonly uint mAddress;
 
-		public Row(uint address)
+		public Order(uint address)
 		{
 			mAddress = address;
 		}

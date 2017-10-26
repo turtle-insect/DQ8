@@ -7,8 +7,9 @@ namespace DQ8
 	{
 		private static Info mThis;
 		public List<NameValue> Items { get; private set; } = new List<NameValue>();
-		public List<NameValue> Zooms { get; private set; } = new List<NameValue>();
-		public List<NameValue> Rows { get; private set; } = new List<NameValue>();
+		public List<NameValue> Places { get; private set; } = new List<NameValue>();
+		public List<NameValue> Orders { get; private set; } = new List<NameValue>();
+		public List<NameValue> Recipes { get; private set; } = new List<NameValue>();
 
 		private Info() { }
 
@@ -39,8 +40,9 @@ namespace DQ8
 		private void Init()
 		{
 			AppendList("info\\item.txt", Items);
-			AppendList("info\\zoom.txt", Zooms);
-			AppendList("info\\row.txt", Rows);
+			AppendList("info\\place.txt", Places);
+			AppendList("info\\order.txt", Orders);
+			AppendList("info\\recipe.txt", Recipes);
 		}
 
 		private void AppendList(String filename, List<NameValue> items)

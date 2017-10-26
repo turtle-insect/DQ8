@@ -65,12 +65,13 @@
       <DependentUpon>ItemSelectWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="NameValue.cs" />
-    <Compile Include="Row.cs" />
-    <Compile Include="RowConverter.cs" />
+    <Compile Include="Order.cs" />
+    <Compile Include="OrderConverter.cs" />
+    <Compile Include="Place.cs" />
+    <Compile Include="Recipe.cs" />
     <Compile Include="SaveData.cs" />
     <Compile Include="Skill.cs" />
     <Compile Include="Util.cs" />
-    <Compile Include="Zoom.cs" />
     <Page Include="AboutWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

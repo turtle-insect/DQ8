@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace DQ8
 {
-	class Zoom
+	class Place
 	{
 		private readonly uint ID;
 
 		public String Name { get; set; }
 
-		public Zoom(uint id)
+		public Place(uint id)
 		{
 			ID = id;
 		}

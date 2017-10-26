@@ -10,6 +10,8 @@ namespace DQ8
 	/// </summary>
 	public partial class MainWindow : Window
 	{
+		DataContext mDatacontext;
+
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -58,6 +60,22 @@ namespace DQ8
 		private void MenuItemAbout_Click(object sender, RoutedEventArgs e)
 		{
 			new AboutWindow().ShowDialog();
+		}
+
+		private void MenuItemRecipeCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var recipe in mDatacontext.Recipes)
+			{
+				recipe.Exist = true;
+			}
+		}
+
+		private void MenuItemRecipeUnCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var recipe in mDatacontext.Recipes)
+			{
+				recipe.Exist = false;
+			}
 		}
 
 		private void ToolBarFileOpen_Click(object sender, RoutedEventArgs e)
@@ -112,7 +130,8 @@ namespace DQ8
 
 		private void Init()
 		{
-			DataContext = new DataContext();
+			mDatacontext = new DataContext();
+			DataContext = mDatacontext;
 		}
 
 		private void Save()

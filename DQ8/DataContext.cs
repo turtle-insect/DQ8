@@ -8,8 +8,9 @@ namespace DQ8
 	{
 		public Info Info { get; set; } = Info.Instance();
 		public ObservableCollection<Charactor> Party { get; set; } = new ObservableCollection<Charactor>();
-		public ObservableCollection<Zoom> Destination { get; set; } = new ObservableCollection<Zoom>();
-		public ObservableCollection<Row> Rows { get; set; } = new ObservableCollection<Row>();
+		public ObservableCollection<Place> Places { get; set; } = new ObservableCollection<Place>();
+		public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order>();
+		public ObservableCollection<Recipe> Recipes { get; set; } = new ObservableCollection<Recipe>();
 		public Bag Bag { get; set; } = new Bag();
 
 		public DataContext()
@@ -24,7 +25,7 @@ namespace DQ8
 				new List<String>{"扇スキル", "ムチスキル", "短剣スキル", "格闘スキル", "アウトロー" },
 				new List<String>{"爪スキル", "打撃スキル", "ブーメラン", "格闘スキル", "ねっけつ" },
 			};
-			foreach (var member in Info.Instance().Rows)
+			foreach (var member in Info.Instance().Orders)
 			{
 				if (member.Value == 0xFF) continue;
 				Charactor ch = new Charactor(0x11EC + member.Value * 64, 0xA10 + member.Value * 34, skills[(int)member.Value]);
@@ -33,18 +34,23 @@ namespace DQ8
 			}
 
 			// ルーラ
-			foreach (var item in Info.Instance().Zooms)
+			foreach (var item in Info.Instance().Places)
 			{
-				Zoom zoom = new Zoom(item.Value);
+				Place zoom = new Place(item.Value);
 				zoom.Name = item.Name;
-				Destination.Add(zoom);
+				Places.Add(zoom);
 			}
 
 			// パーティ並び
 			for (uint i = 0; i < 6; i++)
 			{
-				Row row = new Row(0x11A0 + i);
-				Rows.Add(row);
+				Order row = new Order(0x11A0 + i);
+				Orders.Add(row);
+			}
+
+			foreach (var recipe in Info.Instance().Recipes)
+			{
+				Recipes.Add(new Recipe(recipe.Value) { Name = recipe.Name });
 			}
 		}
 

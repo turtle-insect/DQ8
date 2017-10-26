@@ -11,7 +11,7 @@
     <Grid>
         <Grid.Resources>
             <local:ItemConverter x:Key="ItemConverter"/>
-            <local:RowConverter x:Key="RowConverter"/>
+            <local:OrderConverter x:Key="OrderConverter"/>
         </Grid.Resources>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
@@ -279,7 +279,7 @@
                     </ListBox>
                 </TabItem>
                 <TabItem Header="ルーラ">
-                    <ListBox ItemsSource="{Binding Destination}">
+                    <ListBox ItemsSource="{Binding Places}">
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <CheckBox Content="{Binding Name}" IsChecked="{Binding Arrival}"/>
@@ -293,10 +293,10 @@
                             <RowDefinition/>
                             <RowDefinition Height="Auto"/>
                         </Grid.RowDefinitions>
-                        <ListBox x:Name="ListBoxRow" ItemsSource="{Binding Rows}">
+                        <ListBox x:Name="ListBoxRow" ItemsSource="{Binding Orders}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
-                                    <Label Content="{Binding ID, Converter={StaticResource RowConverter}}"/>
+                                    <Label Content="{Binding ID, Converter={StaticResource OrderConverter}}"/>
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
@@ -308,6 +308,21 @@
                             </ComboBox.ItemTemplate>
                         </ComboBox>
                     </Grid>
+                </TabItem>
+                <TabItem Header="錬金釜">
+                    <ListBox ItemsSource="{Binding Recipes}">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="全てチェック" Click="MenuItemRecipeCheck_Click"/>
+                                <MenuItem Header="全てチェック解除" Click="MenuItemRecipeUnCheck_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <CheckBox Content="{Binding Name}" IsChecked="{Binding Exist}"/>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
                 </TabItem>
             </TabControl>
         </DockPanel>
