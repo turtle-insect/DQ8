@@ -57,8 +57,15 @@
     </Compile>
     <Compile Include="Bag.cs" />
     <Compile Include="BagItem.cs" />
+    <Compile Include="BattleMonster.cs" />
+    <Compile Include="BattleMonsterConverterID.cs" />
+    <Compile Include="BattleMonsterConverterKind.cs" />
+    <Compile Include="BattleMonsterConverterName.cs" />
+    <Compile Include="BattleMonsterConverterStreet.cs" />
+    <Compile Include="BattleMonsterInfo.cs" />
     <Compile Include="Charactor.cs" />
     <Compile Include="CharactorItem.cs" />
+    <Compile Include="ILineAnalysis.cs" />
     <Compile Include="Info.cs" />
     <Compile Include="ItemConverter.cs" />
     <Compile Include="ItemSelectWindow.xaml.cs">

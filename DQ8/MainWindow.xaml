@@ -12,6 +12,10 @@
         <Grid.Resources>
             <local:ItemConverter x:Key="ItemConverter"/>
             <local:OrderConverter x:Key="OrderConverter"/>
+            <local:BattleMonsterConverterID x:Key="BattleMonsterConverterID"/>
+            <local:BattleMonsterConverterName x:Key="BattleMonsterConverterName"/>
+            <local:BattleMonsterConverterStreet x:Key="BattleMonsterConverterStreet"/>
+            <local:BattleMonsterConverterKind x:Key="BattleMonsterConverterKind"/>
         </Grid.Resources>
         <DockPanel>
             <Menu DockPanel.Dock="Top">
@@ -323,6 +327,130 @@
                             </DataTemplate>
                         </ListBox.ItemTemplate>
                     </ListBox>
+                </TabItem>
+                <TabItem Header="バトルロード">
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition Height="auto"/>
+                            <RowDefinition/>
+                        </Grid.RowDefinitions>
+                        <ListBox x:Name="ListBoxBattleLoadMonster" Grid.Row="3" ItemsSource="{Binding BattleLoadMonsters}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel Orientation="Horizontal">
+                                        <Label Content="名前："/>
+                                        <ComboBox ItemsSource="{Binding Path=DataContext.Info.BattleLoadMonsters, 
+                                            RelativeSource={RelativeSource Mode=FindAncestor, AncestorType=local:MainWindow}}"
+                                                  DisplayMemberPath="Name" Width="100"
+                                                  SelectedIndex="{Binding ID, Converter={StaticResource BattleMonsterConverterID}}"/>
+                                        <Label Content="通り名："/>
+                                        <Label Content="{Binding ID, Converter={StaticResource BattleMonsterConverterStreet}}" Width="100"/>
+                                        <Label Content="種別："/>
+                                        <Label Content="{Binding ID, Converter={StaticResource BattleMonsterConverterKind}}" Width="100"/>
+                                        <Label Content="HP"/>
+                                        <TextBox Text="{Binding HP, UpdateSourceTrigger=PropertyChanged}" Width="80"/>
+                                        <Label Content="MP"/>
+                                        <TextBox Text="{Binding MP, UpdateSourceTrigger=PropertyChanged}" Width="80"/>
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <Grid Grid.Row="1">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition/>
+                                <ColumnDefinition/>
+                            </Grid.ColumnDefinitions>
+                            <StackPanel>
+                                <DockPanel>
+                                    <Label Content="チーム1の名前"/>
+                                    <TextBox Text="{Binding TermName1}"/>
+                                </DockPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Content="1匹目"/>
+                                    <ComboBox Grid.Column="1" ItemsSource="{Binding ElementName=ListBoxBattleLoadMonster, Path=Items}"
+                                              SelectedIndex="{Binding Term11}" IsSynchronizedWithCurrentItem="False">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding ID, Converter={StaticResource BattleMonsterConverterName}}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <Label Grid.Row="1" Content="2匹目"/>
+                                    <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ElementName=ListBoxBattleLoadMonster, Path=Items}"
+                                              SelectedIndex="{Binding Term12}" IsSynchronizedWithCurrentItem="False">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding ID, Converter={StaticResource BattleMonsterConverterName}}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <Label Grid.Row="2" Content="3匹目"/>
+                                    <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding ElementName=ListBoxBattleLoadMonster, Path=Items}"
+                                              SelectedIndex="{Binding Term13}" IsSynchronizedWithCurrentItem="False">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding ID, Converter={StaticResource BattleMonsterConverterName}}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </Grid>
+                            </StackPanel>
+                            <StackPanel Grid.Column="1">
+                                <DockPanel>
+                                    <Label Content="チーム2の名前"/>
+                                    <TextBox Text="{Binding TermName2}"/>
+                                </DockPanel>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                        <RowDefinition/>
+                                    </Grid.RowDefinitions>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition/>
+                                        <ColumnDefinition/>
+                                    </Grid.ColumnDefinitions>
+                                    <Label Content="1匹目"/>
+                                    <ComboBox Grid.Column="1" ItemsSource="{Binding ElementName=ListBoxBattleLoadMonster, Path=Items}"
+                                              SelectedIndex="{Binding Term21}" IsSynchronizedWithCurrentItem="False">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding ID, Converter={StaticResource BattleMonsterConverterName}}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <Label Grid.Row="1" Content="2匹目"/>
+                                    <ComboBox Grid.Row="1" Grid.Column="1" ItemsSource="{Binding ElementName=ListBoxBattleLoadMonster, Path=Items}"
+                                              SelectedIndex="{Binding Term22}" IsSynchronizedWithCurrentItem="False">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding ID, Converter={StaticResource BattleMonsterConverterName}}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                    <Label Grid.Row="2" Content="3匹目"/>
+                                    <ComboBox Grid.Row="2" Grid.Column="1" ItemsSource="{Binding ElementName=ListBoxBattleLoadMonster, Path=Items}"
+                                              SelectedIndex="{Binding Term23}" IsSynchronizedWithCurrentItem="False">
+                                        <ComboBox.ItemTemplate>
+                                            <DataTemplate>
+                                                <Label Content="{Binding ID, Converter={StaticResource BattleMonsterConverterName}}"/>
+                                            </DataTemplate>
+                                        </ComboBox.ItemTemplate>
+                                    </ComboBox>
+                                </Grid>
+                            </StackPanel>
+                        </Grid>
+                    </Grid>
                 </TabItem>
             </TabControl>
         </DockPanel>

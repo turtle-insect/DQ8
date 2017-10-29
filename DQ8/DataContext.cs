@@ -11,6 +11,7 @@ namespace DQ8
 		public ObservableCollection<Place> Places { get; set; } = new ObservableCollection<Place>();
 		public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order>();
 		public ObservableCollection<Recipe> Recipes { get; set; } = new ObservableCollection<Recipe>();
+		public ObservableCollection<BattleMonster> BattleLoadMonsters { get; set; } = new ObservableCollection<BattleMonster>();
 		public Bag Bag { get; set; } = new Bag();
 
 		public DataContext()
@@ -48,9 +49,16 @@ namespace DQ8
 				Orders.Add(row);
 			}
 
+			// 錬金釜
 			foreach (var recipe in Info.Instance().Recipes)
 			{
 				Recipes.Add(new Recipe(recipe.Value) { Name = recipe.Name });
+			}
+
+			// バトルロードモンスター
+			for (uint i = 0; i < 24; i++)
+			{
+				BattleLoadMonsters.Add(new BattleMonster(0x13F0 + i * 8));
 			}
 		}
 
@@ -213,6 +221,78 @@ namespace DQ8
 			set
 			{
 				Util.WriteNumber(0x381C, 4, value, 0, 9999999);
+			}
+		}
+
+		public uint Term11
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x13C0, 1);
+			}
+			set
+			{
+				Util.WriteNumber(0x13C0, 1, value, 0, 23);
+			}
+		}
+
+		public uint Term12
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x13C2, 1);
+			}
+			set
+			{
+				Util.WriteNumber(0x13C2, 1, value, 0, 23);
+			}
+		}
+
+		public uint Term13
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x13C4, 1);
+			}
+			set
+			{
+				Util.WriteNumber(0x13C4, 1, value, 0, 23);
+			}
+		}
+
+		public uint Term21
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x13E4, 1);
+			}
+			set
+			{
+				Util.WriteNumber(0x13E4, 1, value, 0, 23);
+			}
+		}
+
+		public uint Term22
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x13E6, 1);
+			}
+			set
+			{
+				Util.WriteNumber(0x13E6, 1, value, 0, 23);
+			}
+		}
+
+		public uint Term23
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x13E8, 1);
+			}
+			set
+			{
+				Util.WriteNumber(0x13E8, 1, value, 0, 23);
 			}
 		}
 	}
