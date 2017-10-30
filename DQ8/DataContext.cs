@@ -224,6 +224,32 @@ namespace DQ8
 			}
 		}
 
+		public String TermName1
+		{
+			get
+			{
+				return SaveData.Instance().ReadUnicode(0x13A8, 18);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteUnicode(0x13A8, 18, value);
+			}
+		}
+
+		public String TermName2
+		{
+			get
+			{
+				return SaveData.Instance().ReadUnicode(0x13CC, 18);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteUnicode(0x13CC, 18, value);
+			}
+		}
+
 		public uint Term11
 		{
 			get
