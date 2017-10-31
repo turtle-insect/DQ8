@@ -63,6 +63,7 @@
     <Compile Include="BattleMonsterConverterName.cs" />
     <Compile Include="BattleMonsterConverterStreet.cs" />
     <Compile Include="BattleMonsterInfo.cs" />
+    <Compile Include="BattleMonsterRank.cs" />
     <Compile Include="Charactor.cs" />
     <Compile Include="CharactorItem.cs" />
     <Compile Include="ILineAnalysis.cs" />

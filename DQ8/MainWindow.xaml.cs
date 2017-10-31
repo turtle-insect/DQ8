@@ -61,10 +61,6 @@ namespace DQ8
 		private void MenuItemAbout_Click(object sender, RoutedEventArgs e)
 		{
 			new AboutWindow().ShowDialog();
-			for (uint i = 0; i < 2088 / 4; i++)
-			{
-				SaveData.Instance().WriteNumber(0x2D9C + i * 4, 2, i + 1);
-			}
 		}
 
 		private void MenuItemRecipeCheck_Click(object sender, RoutedEventArgs e)

@@ -12,6 +12,7 @@ namespace DQ8
 		public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order>();
 		public ObservableCollection<Recipe> Recipes { get; set; } = new ObservableCollection<Recipe>();
 		public ObservableCollection<BattleMonster> BattleLoadMonsters { get; set; } = new ObservableCollection<BattleMonster>();
+		public ObservableCollection<BattleMonsterRank> Ranks { get; set; } = new ObservableCollection<BattleMonsterRank>();
 		public Bag Bag { get; set; } = new Bag();
 
 		public DataContext()
@@ -59,6 +60,12 @@ namespace DQ8
 			for (uint i = 0; i < 24; i++)
 			{
 				BattleLoadMonsters.Add(new BattleMonster(0x13F0 + i * 8));
+			}
+
+			String[] names = { "G", "F", "E", "D", "C", "B", "A", "S" };
+			for (uint i = 0; i < names.Length; i++)
+			{
+				Ranks.Add(new BattleMonsterRank(i) { Name = "ランク" + names[i] });
 			}
 		}
 

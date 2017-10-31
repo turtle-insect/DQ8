@@ -335,6 +335,13 @@
                             <RowDefinition Height="auto"/>
                             <RowDefinition/>
                         </Grid.RowDefinitions>
+                        <ListBox ItemsSource="{Binding Ranks}">
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <CheckBox Content="{Binding Name}" IsChecked="{Binding Clear}"/>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
                         <ListBox x:Name="ListBoxBattleLoadMonster" Grid.Row="3" ItemsSource="{Binding BattleLoadMonsters}">
                             <ListBox.ItemTemplate>
                                 <DataTemplate>
