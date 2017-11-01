@@ -328,5 +328,44 @@ namespace DQ8
 				Util.WriteNumber(0x13E8, 1, value, 0, 23);
 			}
 		}
+
+		public bool Alchemy
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x2B56, 1) == 1;
+			}
+
+			set
+			{
+				SaveData.Instance().WriteNumber(0x2B56, 1, value ? 1U : 0);
+			}
+		}
+
+		public bool TermMake
+		{
+			get
+			{
+				return SaveData.Instance().ReadBit(0x0100, 2);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteBit(0x0100, 2, value);
+			}
+		}
+
+		public bool TermCall
+		{
+			get
+			{
+				return SaveData.Instance().ReadBit(0x04D6, 0);
+			}
+
+			set
+			{
+				SaveData.Instance().WriteBit(0x04D6, 0, value);
+			}
+		}
 	}
 }
