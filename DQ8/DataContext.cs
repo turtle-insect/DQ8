@@ -11,6 +11,7 @@ namespace DQ8
 		public ObservableCollection<Place> Places { get; set; } = new ObservableCollection<Place>();
 		public ObservableCollection<Order> Orders { get; set; } = new ObservableCollection<Order>();
 		public ObservableCollection<Recipe> Recipes { get; set; } = new ObservableCollection<Recipe>();
+		public ObservableCollection<Monster> Monsters { get; set; } = new ObservableCollection<Monster>();
 		public ObservableCollection<BattleMonster> BattleLoadMonsters { get; set; } = new ObservableCollection<BattleMonster>();
 		public ObservableCollection<BattleMonsterRank> Ranks { get; set; } = new ObservableCollection<BattleMonsterRank>();
 		public Bag Bag { get; set; } = new Bag();
@@ -54,6 +55,11 @@ namespace DQ8
 			foreach (var recipe in Info.Instance().Recipes)
 			{
 				Recipes.Add(new Recipe(recipe.Value) { Name = recipe.Name });
+			}
+
+			foreach (var monster in Info.Instance().Monsters)
+			{
+				Monsters.Add(new Monster(monster.Value) { Name = monster.Name });
 			}
 
 			// バトルロードモンスター

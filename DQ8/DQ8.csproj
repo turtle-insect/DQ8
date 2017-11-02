@@ -72,6 +72,7 @@
     <Compile Include="ItemSelectWindow.xaml.cs">
       <DependentUpon>ItemSelectWindow.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Monster.cs" />
     <Compile Include="NameValue.cs" />
     <Compile Include="Order.cs" />
     <Compile Include="OrderConverter.cs" />

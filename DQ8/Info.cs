@@ -10,6 +10,7 @@ namespace DQ8
 		public List<NameValue> Places { get; private set; } = new List<NameValue>();
 		public List<NameValue> Orders { get; private set; } = new List<NameValue>();
 		public List<NameValue> Recipes { get; private set; } = new List<NameValue>();
+		public List<NameValue> Monsters { get; private set; } = new List<NameValue>();
 		public List<BattleMonsterInfo> BattleLoadMonsters { get; private set; } = new List<BattleMonsterInfo>();
 
 		private Info() { }
@@ -44,6 +45,7 @@ namespace DQ8
 			AppendList("info\\place.txt", Places);
 			AppendList("info\\order.txt", Orders);
 			AppendList("info\\recipe.txt", Recipes);
+			AppendList("info\\monster.txt", Monsters);
 			AppendList("info\\battleload.txt", BattleLoadMonsters);
 		}
 
