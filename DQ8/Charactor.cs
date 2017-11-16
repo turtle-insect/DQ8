@@ -176,6 +176,19 @@ namespace DQ8
 		{
 			get
 			{
+				return SaveData.Instance().ReadNumber(mStatusAddress + 0x26, 2);
+			}
+
+			set
+			{
+				Util.WriteNumber(mStatusAddress + 0x26, 2, value, 0, 999);
+			}
+		}
+
+		public uint SpeedPlus
+		{
+			get
+			{
 				return SaveData.Instance().ReadNumber(mStatusAddress + 0x28, 2);
 			}
 
@@ -185,7 +198,7 @@ namespace DQ8
 			}
 		}
 
-		public uint SpeedPlus
+		public uint CoolPlus
 		{
 			get
 			{
@@ -195,19 +208,6 @@ namespace DQ8
 			set
 			{
 				Util.WriteNumber(mStatusAddress + 0x2A, 2, value, 0, 999);
-			}
-		}
-
-		public uint CoolPlus
-		{
-			get
-			{
-				return SaveData.Instance().ReadNumber(mStatusAddress + 0x2C, 2);
-			}
-
-			set
-			{
-				Util.WriteNumber(mStatusAddress + 0x2C, 2, value, 0, 999);
 			}
 		}
 
