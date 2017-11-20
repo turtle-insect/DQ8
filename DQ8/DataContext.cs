@@ -48,8 +48,7 @@ namespace DQ8
 			// パーティ並び
 			for (uint i = 0; i < 6; i++)
 			{
-				Order row = new Order(0x11A0 + i);
-				Orders.Add(row);
+				Orders.Add(new Order(0x11A0 + i));
 			}
 
 			// 錬金釜

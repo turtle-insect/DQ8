@@ -8,21 +8,23 @@ using System.Windows.Data;
 
 namespace DQ8
 {
-	class OrderConverter : IValueConverter
+	class OrderIDConverter : IValueConverter
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
 			uint id = (uint)value;
-			foreach (var row in Info.Instance().Orders)
+			for(int i = 0; i < Info.Instance().Orders.Count; i++)
 			{
-				if (row.Value == id) return row.Name;
+				if (id == Info.Instance().Orders[i].Value) return i;
 			}
-			return "";
+
+			return -1;
 		}
 
 		public object ConvertBack(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			return "";
+			int index = (int)value;
+			return Info.Instance().Orders[index].Value;
 		}
 	}
 }

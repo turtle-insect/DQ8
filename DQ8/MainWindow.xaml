@@ -12,6 +12,7 @@
         <Grid.Resources>
             <local:ItemConverter x:Key="ItemConverter"/>
             <local:OrderConverter x:Key="OrderConverter"/>
+            <local:OrderIDConverter x:Key="OrderIDConverter"/>
             <local:BattleMonsterConverterID x:Key="BattleMonsterConverterID"/>
             <local:BattleMonsterConverterName x:Key="BattleMonsterConverterName"/>
             <local:BattleMonsterConverterStreet x:Key="BattleMonsterConverterStreet"/>
@@ -312,13 +313,8 @@
                                 </DataTemplate>
                             </ListBox.ItemTemplate>
                         </ListBox>
-                        <ComboBox Grid.Row="1" ItemsSource="{Binding Info.Rows}" SelectedIndex="{Binding ElementName=ListBoxRow, Path=SelectedItem.ID}">
-                            <ComboBox.ItemTemplate>
-                                <DataTemplate>
-                                    <Label Content="{Binding Name}"/>
-                                </DataTemplate>
-                            </ComboBox.ItemTemplate>
-                        </ComboBox>
+                        <ComboBox Grid.Row="1" ItemsSource="{Binding Info.Orders}"
+                                  SelectedIndex="{Binding ElementName=ListBoxRow, Path=SelectedItem.ID, Converter={StaticResource OrderIDConverter}}" DisplayMemberPath="Name"/>
                     </Grid>
                 </TabItem>
                 <TabItem Header="錬金釜">
