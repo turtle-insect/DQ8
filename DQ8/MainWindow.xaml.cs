@@ -97,6 +97,23 @@ namespace DQ8
 			Init();
 		}
 
+		private void MenuItemPlaceCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var item in ListBoxPlace.Items)
+			{
+				Place place = item as Place;
+				if (place != null) place.Arrival = true;
+			}
+		}
+
+		private void MenuItemPlaceUnCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var item in ListBoxPlace.Items)
+			{
+				Place place = item as Place;
+				if (place != null) place.Arrival = false;
+			}
+		}
 
 		private void ButtonItemChange_Click(object sender, RoutedEventArgs e)
 		{
