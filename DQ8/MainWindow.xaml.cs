@@ -99,19 +99,17 @@ namespace DQ8
 
 		private void MenuItemPlaceCheck_Click(object sender, RoutedEventArgs e)
 		{
-			foreach (var item in ListBoxPlace.Items)
+			foreach (var place in (DataContext as DataContext)?.Places)
 			{
-				Place place = item as Place;
-				if (place != null) place.Arrival = true;
+				place.Arrival = true;
 			}
 		}
 
 		private void MenuItemPlaceUnCheck_Click(object sender, RoutedEventArgs e)
 		{
-			foreach (var item in ListBoxPlace.Items)
+			foreach (var place in (DataContext as DataContext)?.Places)
 			{
-				Place place = item as Place;
-				if (place != null) place.Arrival = false;
+				place.Arrival = false;
 			}
 		}
 

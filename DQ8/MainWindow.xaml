@@ -292,7 +292,7 @@
                     </ListBox>
                 </TabItem>
                 <TabItem Header="ルーラ">
-                    <ListBox x:Name="ListBoxPlace" ItemsSource="{Binding Places}">
+                    <ListBox ItemsSource="{Binding Places}">
                         <ListBox.ContextMenu>
                             <ContextMenu>
                                 <MenuItem Header="全て選択" Click="MenuItemPlaceCheck_Click"/>
