@@ -353,6 +353,12 @@
                 </TabItem>
                 <TabItem Header="アイテム図鑑">
                     <ListBox ItemsSource="{Binding Items}">
+                        <ListBox.ContextMenu>
+                            <ContextMenu>
+                                <MenuItem Header="全て選択" Click="MenuItemItemCheck_Click"/>
+                                <MenuItem Header="全て非選択" Click="MenuItemItemUnCheck_Click"/>
+                            </ContextMenu>
+                        </ListBox.ContextMenu>
                         <ListBox.ItemTemplate>
                             <DataTemplate>
                                 <CheckBox Content="{Binding Name}" IsChecked="{Binding Get}"/>

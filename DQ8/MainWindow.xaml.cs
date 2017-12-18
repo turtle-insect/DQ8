@@ -113,6 +113,22 @@ namespace DQ8
 			}
 		}
 
+		private void MenuItemItemCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var item in (DataContext as DataContext)?.Items)
+			{
+				item.Get = true;
+			}
+		}
+
+		private void MenuItemItemUnCheck_Click(object sender, RoutedEventArgs e)
+		{
+			foreach (var item in (DataContext as DataContext)?.Items)
+			{
+				item.Get = false;
+			}
+		}
+
 		private void ButtonItemChange_Click(object sender, RoutedEventArgs e)
 		{
 			BagItem item = (sender as Button)?.DataContext as BagItem;
