@@ -409,7 +409,7 @@
                             <StackPanel>
                                 <DockPanel>
                                     <Label Content="チーム1の名前"/>
-                                    <TextBox Text="{Binding TermName1}"/>
+                                    <TextBox Text="{Binding TermName1, UpdateSourceTrigger=PropertyChanged}"/>
                                 </DockPanel>
                                 <Grid>
                                     <Grid.RowDefinitions>
@@ -453,7 +453,7 @@
                             <StackPanel Grid.Column="1">
                                 <DockPanel>
                                     <Label Content="チーム2の名前"/>
-                                    <TextBox Text="{Binding TermName2}"/>
+                                    <TextBox Text="{Binding TermName2, UpdateSourceTrigger=PropertyChanged}"/>
                                 </DockPanel>
                                 <Grid>
                                     <Grid.RowDefinitions>

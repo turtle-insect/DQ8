@@ -7,7 +7,15 @@ namespace DQ8
 		private static SaveData mThis;
 		private String mFileName = null;
 		private Byte[] mBuffer = null;
-		public uint Adventure { private get; set; } = 0;
+		private uint mAdventure = 0;
+		public uint Adventure
+		{
+			set
+			{
+				Save();
+				mAdventure = value;
+			}
+		}
 
 		private SaveData()
 		{}
@@ -159,7 +167,7 @@ namespace DQ8
 
 		private uint CalcAddress(uint address)
 		{
-			return Adventure == 0 ? address : address + Util.BlockSize;
+			return address + Util.BlockSize * mAdventure;
 		}
 
 		private void Backup()
