@@ -161,6 +161,42 @@ namespace DQ8
 			}
 		}
 
+		public uint GoldBank
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x0A0C, 4);
+			}
+			set
+			{
+				Util.WriteNumber(0x0A0C, 4, value, 0, 99990000);
+			}
+		}
+
+		public uint CasinoCoin
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x1564, 4);
+			}
+			set
+			{
+				Util.WriteNumber(0x1564, 4, value, 0, 9999999);
+			}
+		}
+
+		public uint SmallMedal
+		{
+			get
+			{
+				return SaveData.Instance().ReadNumber(0x2B64, 4);
+			}
+			set
+			{
+				Util.WriteNumber(0x2B64, 4, value, 0, 9999999);
+			}
+		}
+
 		public uint KillCount
 		{
 			get
