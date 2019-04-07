@@ -36,7 +36,7 @@ namespace DQ8
 
 			set
 			{
-				Util.WriteNumber(mAddress + 2, 2, value, 0, 99);
+				Util.WriteNumber(mAddress + 2, 2, value, 0, 999);
 				PropertyChanged?.Invoke(this, new PropertyChangedEventArgs("Count"));
 			}
 		}

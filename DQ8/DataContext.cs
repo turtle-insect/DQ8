@@ -157,7 +157,7 @@ namespace DQ8
 			}
 			set
 			{
-				Util.WriteNumber(0x0A08, 4, value, 0, 9999999);
+				Util.WriteNumber(0x0A08, 4, value, 0, 99999999);
 			}
 		}
 
@@ -169,7 +169,7 @@ namespace DQ8
 			}
 			set
 			{
-				Util.WriteNumber(0x0A0C, 4, value, 0, 99990000);
+				Util.WriteNumber(0x0A0C, 4, value, 0, 99999000);
 			}
 		}
 
@@ -181,7 +181,7 @@ namespace DQ8
 			}
 			set
 			{
-				Util.WriteNumber(0x1564, 4, value, 0, 9999999);
+				Util.WriteNumber(0x1564, 4, value, 0, 99999999);
 			}
 		}
 
