@@ -14,7 +14,7 @@ http://www.dragonquest.jp/dq8/
 
 # Build環境
 * Windows 10(64bit)
-* Visual Studio 2017
+* Visual Studio 2022
 
 # 編集時の手順
 * saveDataを吸い出す
