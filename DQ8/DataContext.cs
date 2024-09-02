@@ -76,7 +76,7 @@ namespace DQ8
 				BattleLoadMonsters.Add(new BattleMonster(0x13F0 + i * 8));
 			}
 
-			String[] names = { "G", "F", "E", "D", "C", "B", "A", "S" };
+			String[] names = { "G", "F", "E", "D", "C", "B", "A", "S", "SS" };
 			for (uint i = 0; i < names.Length; i++)
 			{
 				Ranks.Add(new BattleMonsterRank(i) { Name = "ランク" + names[i] });
