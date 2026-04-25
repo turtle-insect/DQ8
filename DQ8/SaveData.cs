@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace DQ8
+﻿namespace DQ8
 {
 	class SaveData
 	{
